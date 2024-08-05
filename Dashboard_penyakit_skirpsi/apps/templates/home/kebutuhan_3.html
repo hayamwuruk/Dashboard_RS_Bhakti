@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Kebutuhan 3{% endblock title %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>File {{ name }} Exists</h1>
+    <p>File Name: {{ name }}</p>
+    <div class="table-responsive">
+        {{ table_html|safe }}
+    </div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+<!-- Include any additional JavaScript here -->
+{% endblock javascripts %}

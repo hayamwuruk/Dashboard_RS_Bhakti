@@ -1,0 +1,196 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Produktivitas {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="w-full px-6 py-6 ">
+
+    <!-- row 1 -->
+    <div class="flex flex-wrap mb-2 ">
+     
+      <!-- card 1 -->
+      <div class="w-full max-w-full px-3 mb-6 sm:w-full sm:flex-none xl:mb-0 xl:w-1/2">
+        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+          <div class="flex-auto p-4">
+           
+              <div class="flex-none w-full max-w-full px-3">
+                <div>
+                  <div class="inline-block">
+                  <p class="mb-0 font-sans font-semibold leading-normal text-gray-400 text-size-sm inline"> Periode Tahun  :</p>
+                </div>
+                <div class="inline">
+                  <p class="mb-0 font-sans font-semibold leading-normal text-size-sm  text-gray-400 inline"> {{updated}}</p>
+                </div>
+                <div class="flex flex-col">
+                  <h5 id="Deplesi" class="mb-0 font-bold mt-4 text-4xl text-slate-900   ">
+                    {{keuntungan_terendah}}
+                   
+                  </h5> 
+                
+                </div>
+                  <!-- <p class="text-sm">haha</p> -->
+                 <div class="flex pt-1">
+                  <!-- <img src="{{ config.ASSETS_ROOT }}/img/ijo_bawah3.png" alt=""   class="-ml-1" >  -->
+              
+                 
+                  <p class="mb-0 font-sans  leading-normal text-size-lg font-bold  "> Keuntungan Terendah : </p>
+                  <p class="mb-0 font-sans  leading-normal text-size-lg font-bold ml-1 text-red-500  " > {{bulan_keuntungan}}</p>
+                 </div>
+                  <div class="flex inline-flex">
+                    {% if kenaikan_keuntungan >= 0 %}
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <g clip-path="url(#clip0_46_1724)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.94 7.93999C11.2213 7.65909 11.6025 7.50131 12 7.50131C12.3975 7.50131 12.7788 7.65909 13.06 7.93999L18.718 13.596C18.8573 13.7353 18.9677 13.9007 19.0431 14.0827C19.1184 14.2648 19.1572 14.4598 19.1571 14.6568C19.1571 14.8538 19.1182 15.0489 19.0428 15.2309C18.9674 15.4129 18.8568 15.5782 18.7175 15.7175C18.5782 15.8568 18.4128 15.9672 18.2307 16.0426C18.0487 16.1179 17.8536 16.1567 17.6566 16.1566C17.4596 16.1566 17.2646 16.1177 17.0826 16.0423C16.9006 15.9669 16.7353 15.8563 16.596 15.717L12 11.121L7.404 15.717C7.2657 15.8603 7.10024 15.9747 6.91727 16.0534C6.7343 16.1321 6.53749 16.1735 6.33832 16.1754C6.13915 16.1772 5.94162 16.1393 5.75724 16.064C5.57286 15.9887 5.40533 15.8774 5.26443 15.7366C5.12352 15.5958 5.01206 15.4284 4.93655 15.2441C4.86105 15.0598 4.823 14.8623 4.82464 14.6631C4.82627 14.4639 4.86756 14.2671 4.94608 14.084C5.02461 13.901 5.1388 13.7354 5.282 13.597L10.939 7.93899L10.94 7.93999Z" fill="#0FA958"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_46_1724">
+                      <rect width="24" height="24" fill="white"/>
+                    </clipPath>
+                  </defs>
+                </svg> 
+                <p class="flex flex items-center mb-0 mr-1 text-green-500 font-bold">
+                  {{"{:.1f}".format(kenaikan_keuntungan)}}%</p>
+                  {% else %}
+                  <div class="flex inline-flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.04181 8.73673C8.76056 9.01764 8.37931 9.17542 7.98181 9.17542C7.58431 9.17542 7.20306 9.01764 6.92181 8.73673L1.26381 3.08074C1.12454 2.9414 1.01408 2.776 0.938738 2.59398C0.863392 2.41196 0.824636 2.21688 0.824682 2.01988C0.824729 1.82288 0.863578 1.62782 0.939009 1.44583C1.01444 1.26385 1.12498 1.0985 1.26431 0.959235C1.40364 0.819968 1.56904 0.709509 1.75106 0.634163C1.93308 0.558817 2.12816 0.520061 2.32516 0.520107C2.52216 0.520154 2.71722 0.559003 2.89921 0.634434C3.0812 0.709865 3.24654 0.820402 3.38581 0.959735L7.98181 5.55573L12.5778 0.959735C12.7161 0.816406 12.8816 0.702056 13.0645 0.623358C13.2475 0.54466 13.4443 0.503188 13.6435 0.501364C13.8427 0.499539 14.0402 0.537399 14.2246 0.612734C14.409 0.688068 14.5765 0.799369 14.7174 0.940141C14.8583 1.08091 14.9697 1.24834 15.0453 1.43264C15.1208 1.61695 15.1588 1.81445 15.1572 2.01362C15.1555 2.21279 15.1143 2.40964 15.0357 2.59268C14.9572 2.77573 14.843 2.9413 14.6998 3.07973L9.04281 8.73773L9.04181 8.73673Z" fill="#FF0000"/>
+                    </svg>
+                    <p class="flex flex items-center mb-0 mr-1 ml-1 text-red-500 font-bold">
+                      {{"{:.1f}".format(kenaikan_keuntungan)}}%</p>
+                    </div>
+
+                      {% endif %}
+                    <p class="mb-0 inline-flex text-size-xs items-center"> dari bulan sebelumnya</p>
+                  </div>
+                </div>
+              </div>
+             
+          </div>
+        </div>
+      </div>
+
+         <!-- card 2 -->
+         <div class="w-full max-w-full px-3 mb-6 sm:w-full sm:flex-none xl:mb-0 xl:w-1/2">
+            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+              <div class="flex-auto p-4">
+               
+                  <div class="flex-none w-full max-w-full px-3">
+                    <div>
+                      <div class="inline-block">
+                      <p class="mb-0 font-sans font-semibold leading-normal text-gray-400 text-size-sm inline"> Periode Tahun  :</p>
+                    </div>
+                    <div class="inline">
+                      <p class="mb-0 font-sans font-semibold leading-normal text-size-sm  text-gray-400 inline"> {{updated}}</p>
+                    </div>
+                    <div class="flex flex-col ">
+                      <h5 id="Deplesi" class="mb-0 font-bold mt-4 text-4xl text-slate-900">
+                        {{Total_Keuntungan}}
+                    
+                      </h5> 
+                    
+                    </div>
+                      <!-- <p class="text-sm">haha</p> -->
+                     <div class="flex pt-1">
+                      <!-- <img src="{{ config.ASSETS_ROOT }}/img/ijo_bawah3.png" alt=""   class="-ml-1" >  -->
+                  
+                     
+                      <p class="mb-0 font-sans  leading-normal text-size-lg font-bold mt-4 pb-4 "> Total Keuntungan  </p>
+                     
+                     </div>
+                      
+                    </div>
+                  </div>
+                 
+              </div>
+            </div>
+          </div>
+
+         
+
+      <!-- card2 -->
+      <!-- <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+        <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+          <div class="flex-auto p-4">
+            <div class="flex flex-row -mx-3">
+              <div class="flex-none w-2/3 max-w-full px-3">
+                <div>
+                  <p class="mb-0 font-sans font-semibold leading-normal text-size-sm">Today's Users</p>
+                  <h5 class="mb-0 font-bold">
+                    2,300
+                    <span class="leading-normal text-size-sm font-weight-bolder text-lime-500">+3%</span>
+                  </h5>
+                </div>
+              </div>
+              <div class="px-3 text-right basis-1/3">
+                <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-fuchsia">
+                  <i class="ni ni-world text-size-lg relative top-3.5 text-white"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+
+
+    <!-- cards row 3 -->
+    <div class="flex flex-wrap  w-px mx-2 w-full mt-6">
+      
+      <div class="w-full max-w-full px-3 mt-2 xl:w-full xl:mb-0 xl:w-full sm:flex-none ">
+        <!-- w-full max-w-full px-3 mb-6 sm:w-full sm:flex-none xl:mb-0 xl:w-1/4 -->
+        <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+          <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white py-6 pb-0 pt-4">
+           <div>  <h6 class=" text-center">Perkembangan Keuntungan / Kerugian  </h6>
+            <div class="flex inline-block justify-center items-center">
+            <h6 class="text-center ">  Periode 1 Tahun
+             </h6>
+             <h6 class="  text-center ml-1  ">
+              2021 - 2022
+                
+               </h6>
+            </div>
+            </div>
+          
+             
+          
+          </div>
+          <div class="flex-auto p-4 pt-0">
+            <div>
+              <div id="chartkeuntungan">
+
+              </div>
+              <!-- <canvas id="charthmp" height="200"></canvas> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+    
+   
+
+      
+    </div>
+  
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+<!-- <script src="{{ config.ASSETS_ROOT }}/js/plugins/chartjs.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<!-- <script src="{{ config.ASSETS_ROOT }}/js/chart-1.js" async></script> -->
+<!-- <script src="{{ config.ASSETS_ROOT }}/js/chart-2.js" async></script> -->
+<script src="{{ config.ASSETS_ROOT }}/js/chart-keuntungan.js" async></script>
+<!-- <script src="{{ config.ASSETS_ROOT }}/js/chart-fcr.js" async></script> -->
+
+{% endblock javascripts %}
